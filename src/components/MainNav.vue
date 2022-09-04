@@ -65,7 +65,11 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <ActionButton v-if="!isLoggedIn" data-test="login-button" />
+          <ActionButton
+            v-if="!isLoggedIn"
+            data-test="login-button"
+            @click="loginUser"
+          />
           <ProfileImage v-else data-test="profile-image" />
         </div>
       </div>
@@ -89,6 +93,11 @@ export default {
       menuItems: ["Teams", "Locations", "Benefits", "Jobs", "Students"],
       isLoggedIn: false,
     };
+  },
+  methods: {
+    loginUser() {
+      this.isLoggedIn = true;
+    },
   },
 };
 </script>

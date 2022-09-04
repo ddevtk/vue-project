@@ -22,18 +22,18 @@ describe("MainNav", () => {
   });
 
   describe("when user is logged in", () => {
-    it("user login", () => {
-      const wrapper = mount(MainNav, {
-        data() {
-          return { isLoggedIn: true };
-        },
-      });
+    it("user login", async () => {
+      const wrapper = mount(MainNav);
       // const loginButton = wrapper.findComponent({ name: "ActionButton" });
       // const profileImage = wrapper.findComponent({ name: "ProfileImage" });
-      const loginButton = wrapper.find("[data-test='login-button']");
       const profileImage = wrapper.find("[data-test='profile-image']");
-      expect(profileImage.exists()).toBe(true);
-      expect(loginButton.exists()).toBe(false);
+      expect(profileImage.exists()).toBe(false);
+
+      let loginButton = wrapper.find("[data-test='login-button']");
+      await loginButton.trigger("click");
+
+      loginButton = wrapper.find("[data-test='profile-image']"); // After click login button bien mat => gan lai gia tri login button
+      expect(profileImage.exists()).toBe(false);
     });
   });
 });
