@@ -65,7 +65,8 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <ActionButton />
+          <ActionButton v-if="!isLogged" />
+          <ProfileImage v-else />
         </div>
       </div>
     </div>
@@ -74,16 +75,19 @@
 
 <script>
 import ActionButton from "@/components/ActionButton.vue";
+import ProfileImage from "./ProfileImage.vue";
 export default {
   name: "MainNav",
   components: {
     ActionButton,
+    ProfileImage,
   },
   data() {
     return {
       company: "Symper",
       url: "https://careers.google.com",
       menuItems: ["Teams", "Locations", "Benefits", "Jobs", "Students"],
+      isLogged: false,
     };
   },
 };
