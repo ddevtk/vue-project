@@ -7,7 +7,17 @@
 <script>
 export default {
   name: "ActionButton",
-  props: ["title", "type"],
+  props: {
+    title: { type: String, required: true },
+    type: {
+      type: String,
+      required: false,
+      default: "primary",
+      validator(value) {
+        return ["primary", "secondary"].includes(value);
+      },
+    },
+  },
   computed: {
     buttonClass() {
       return { [this.type]: true };
