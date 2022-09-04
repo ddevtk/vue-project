@@ -65,8 +65,8 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <ActionButton v-if="!isLogged" />
-          <ProfileImage v-else />
+          <ActionButton v-if="!isLoggedIn" data-test="login-button" />
+          <ProfileImage v-else data-test="profile-image" />
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@ export default {
       company: "Symper",
       url: "https://careers.google.com",
       menuItems: ["Teams", "Locations", "Benefits", "Jobs", "Students"],
-      isLogged: false,
+      isLoggedIn: false,
     };
   },
 };
