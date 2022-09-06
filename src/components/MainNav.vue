@@ -44,7 +44,7 @@
               height="12"
             ></rect>
           </svg>
-          <span class="uppercase text-2xl ml-2 text-gray-900">{{
+          <span data-test="brand" class="text-2xl ml-2 text-gray-900">{{
             company
           }}</span></a
         >
@@ -74,22 +74,26 @@
           <ProfileImage v-else data-test="profile-image" />
         </div>
       </div>
+      <SubNav data-test="sub-nav" v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script>
-import ActionButton from "@/components/ActionButton.vue";
-import ProfileImage from "./ProfileImage.vue";
+import ActionButton from "@/components/ActionButton";
+import ProfileImage from "@/components/ProfileImage";
+import SubNav from "@/components/SubNav";
+
 export default {
   name: "MainNav",
   components: {
     ActionButton,
     ProfileImage,
+    SubNav,
   },
   data() {
     return {
-      company: "Symper",
+      company: "Google Career",
       url: "https://careers.google.com",
       menuItems: ["Teams", "Locations", "Benefits", "Jobs", "Students"],
       isLoggedIn: false,
